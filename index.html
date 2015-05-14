@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search Plugin test</title>
+        <script src="jquery.js"></script>
+        <script src="underscore.js"></script>
+        <script src="datepicker.js"></script>
+        <link href="datepicker.css" rel="stylesheet" type="text/css" />
+        <style>
+            body {
+                overflow: hidden;
+            }
+
+            #outer {
+                position: absolute;
+                width: 200px;
+                height: 41px;
+                left: 50%;
+                top: 50%;
+            }
+
+            #border {
+                border: 1px solid lightgray;
+                position: absolute;
+                width: 200px;
+                height: 41px;
+                left: -50%;
+                top: -50%;
+            }
+
+            .ch {
+                border: 1px solid #02b7db !important;
+            }
+
+            #inner {
+                margin: 0;
+                padding: 8px;
+                border: none;
+                outline: none;
+                width: calc(100% - 16px);
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            <div id="border">
+                <input id="inner" />
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $('#inner').focus(function () {
+                    $('#border').addClass('ch');
+
+                    $('.datepicker-window').remove();
+                    var datepicker = createDatepicker();
+                    $('body').append(datepicker);
+                    datepicker
+                        .css('left', $('#inner').outerWidth() + $('#inner').offset().left + 2 + 'px')
+                        .css('top', $('#inner').offset().top - 1 + 'px');
+                }).focusout(function () {
+                    $('#border').removeClass('ch');
+                });
+            });
+        </script>
+    </body>
+</html>

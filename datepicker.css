@@ -1,0 +1,72 @@
+.datepicker-window {
+    position: absolute;
+    z-index: 1000;
+    font-size: 14px;
+
+}
+
+.datepicker-window-header {
+    background-color: #02b7db;
+    height: 28px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding-top: 12px;
+}
+
+.datepicker-window-header a, .datepicker-window-header a:visited, .datepicker-window-header  a:hover {
+    color: white;
+}
+
+.datepicker-window-header a:first-child {
+    float: left;
+    margin-left: 20px;
+    width: 14px;
+    height: 16px;
+    background-image: url(datepicker-arrows.png);
+    background-position: 0 0;
+}
+
+.datepicker-window-header a:last-child {
+    float: right;
+    margin-right: 20px;
+    width: 14px;
+    height: 16px;
+    background-image: url(datepicker-arrows.png);
+    background-position: -14px 0;
+}
+
+table.datepicker-window-days {
+    border-collapse: collapse;
+    border: 1px solid #cccccc;
+}
+
+table.datepicker-window-days td {
+    border: 1px solid #cccccc;
+    text-align: center;
+    background-color: #EDEDDE;
+    width: 45px;
+    height: 30px;
+}
+
+table.datepicker-window-days td:last-child {
+    background-color: #FFD8D8;
+}
+
+table.datepicker-window-table {
+    border-collapse: collapse;
+    border: 1px solid #cccccc;
+    margin-top: -1px;
+}
+
+table.datepicker-window-table td {
+    border: 1px solid #cccccc;
+    background-color: white;
+    text-align: center;
+    width: 45px;
+    height: 35px;
+}
+
+table.datepicker-window-table td:last-child {
+    color: rgb(199, 11, 11);
+}
