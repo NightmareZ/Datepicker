@@ -52,6 +52,10 @@ function getDay(datepicker) {
     return parseInt(datepicker.find('input[type=hidden][name=day]').val());
 }
 
+function getDate(datepicker) {
+    return new Date(getYear(datepicker), getMonth(datepicker), getDay(datepicker));
+}
+
 function rebuildDatepicker(datepicker) {
     var header = datepicker.find('.datepicker-window-header');
     header.find('span').text(numberToMonth(getMonth(datepicker)) + ' ' + getYear(datepicker));
@@ -76,6 +80,23 @@ function rebuildDatepicker(datepicker) {
                 var d = i + j * 7 + 1 - dayOfWeek;
                 var column = $(document.createElement('td'))
                     .text(d <= daysCount && offset-- <= 0 ? d : '');
+
+                (function (d) {
+                    if (column.text().trim().length) {
+                        column
+                            .css('cursor', 'pointer')
+                            .click(function () {
+                                setDay(datepicker, d, true);
+                                dpCallback && dpCallback(getDate(datepicker));
+                                $(this).parent().parent().parent().parent().remove();
+                            });
+                    }
+                })(d);
+
+                if (getDay(datepicker) == d) {
+                    column.css('background-color', '#eeeeee');
+                }
+
                 monthDaysTableRow.append(column);
 
                 if (d >= daysCount) {
@@ -117,7 +138,11 @@ function setDate(datepicker, year, month, day) {
     rebuildDatepicker(datepicker);
 }
 
-function createDatepicker() {
+var dpCallback;
+
+function createDatepicker(callback) {
+    dpCallback = callback;
+
     var window = $(document.createElement('div'))
         .addClass('datepicker-window');
 

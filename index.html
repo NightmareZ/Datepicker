@@ -55,7 +55,9 @@
                     $('#border').addClass('ch');
 
                     $('.datepicker-window').remove();
-                    var datepicker = createDatepicker();
+                    var datepicker = createDatepicker(function (date) {
+                        $('#inner').val(date.getFullYear() + ' / ' + date.getMonth() + ' / ' + date.getDate());
+                    });
                     $('body').append(datepicker);
                     datepicker
                         .css('left', $('#inner').outerWidth() + $('#inner').offset().left + 2 + 'px')
