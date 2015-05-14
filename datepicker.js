@@ -93,7 +93,7 @@ function rebuildDatepicker(datepicker) {
                     }
                 })(d);
 
-                if (getDay(datepicker) == d) {
+                if (getDay(datepicker) == d && new Date().getFullYear() == getYear(datepicker) && new Date().getMonth() == getMonth(datepicker)) {
                     column.css('background-color', '#eeeeee');
                 }
 
